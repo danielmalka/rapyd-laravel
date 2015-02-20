@@ -8,7 +8,7 @@ use Zofe\Rapyd\Rapyd;
 class Datetime extends Field
 {
     public $type = "datetime";
-    public $format = 'm/d/Y H:i';
+    public $format = 'm/d/Y H:i:s';
     public $language = 'en';
 
     /**
@@ -29,7 +29,7 @@ class Datetime extends Field
      */
     protected function isodatetimeToHuman($isodatetime)
     {
-        $datetime = \dateTime::createFromFormat( 'Y-m-d H:i', $isodatetime);
+        $datetime = \dateTime::createFromFormat( 'Y-m-d H:i:s', $isodatetime);
         if (!$datetime) return '';
         $timestamp = $datetime->getTimestamp();
         if ($timestamp < 1) {
@@ -51,7 +51,7 @@ class Datetime extends Field
         if ($timestamp < 1) {
             return "";
         }
-        $humandatetime = date('Y-m-d H:i', $timestamp);
+        $humandatetime = date('Y-m-d H:i:s', $timestamp);
 
         return $humandatetime;
     }
